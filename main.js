@@ -83,6 +83,11 @@ function buildDomString(product) {
      domString +=       '<p>'+ product.description +'</p>';
      domString +=          '<h6>$' + product.price +'</h6>';
      domString +=      '</div>';
+     if (product.soldOut) {
+      domString += '<div class="sold-out">';
+      domString += '<img src="./images/soldOut.png" alt="Sold Out">';
+      domString += '</div>';
+     }
      domString +=    '</section>';
      return domString; 
 }
