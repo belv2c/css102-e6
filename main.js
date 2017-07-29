@@ -58,23 +58,43 @@ var productContainer = document.getElementById("product-container");
 for (var i = 0; i < allProducts.length; i++) {
 
 	var currentProduct = allProducts[i];
+  var productDomString = buildDomString(currentProduct)
 
 	var domString = "";
 
 
-	 domString +=	'<section class="product">';
-     domString +=	  '<div class="title">';
-     domString +=   	  '<h2>' + currentProduct.name + '</h2>';
-     domString +=     '</div>';
-     domString +=  		 '<div class="image">';
-     domString +=   	  '<img src="'+ currentProduct.imagePath +'" alt="' + currentProduct.imagePath +'">';
-     domString +=  	  '</div>';
-     domString +=  	 '<div class="description">';
-     domString +=       '<p>'+ currentProduct.description +'</p>';
-     domString +=          '<h6>$' + currentProduct.price +'</h6>';
-     domString +=  	   '</div>';
-     domString += 	 '</section>';
+	 
 
      console.log("Dom String from for loop", domString)
-     productContainer.innerHTML += domString;
+     productContainer.innerHTML += productDomString;
 }
+
+function buildDomString(product) {
+  var domString = "";
+
+  domString +=  '<section class="product">';
+     domString +=   '<div class="title">';
+     domString +=       '<h2>' + product.name + '</h2>';
+     domString +=     '</div>';
+     domString +=      '<div class="image">';
+     domString +=       '<img src="'+ product.imagePath +'" alt="' + product.imagePath +'">';
+     domString +=     '</div>';
+     domString +=    '<div class="description">';
+     domString +=       '<p>'+ product.description +'</p>';
+     domString +=          '<h6>$' + product.price +'</h6>';
+     domString +=      '</div>';
+     domString +=    '</section>';
+     return domString; 
+}
+
+
+function printProductArrayToDom(productArray) {
+  for (var i = 0; i < productArray.length; i++) {
+
+  var currentProduct = productArray[i];
+  var productDomString = buildDomString(currentProduct);
+  productContainer.innerHTML += productDomString;
+  }
+}
+
+printProductArrayToDom(allProducts);
